@@ -25,8 +25,9 @@ const UserProvider = ({ children }) => {
 
     getData(`http://localhost:8001/reservations/user/${currentUser}`).then(
       (res) => {
-        console.log(res);
-        sessionStorage.setItem('reservations', JSON.stringify(res.result));
+        if (res.result) {
+          sessionStorage.setItem("reservations", JSON.stringify(res.result));
+        }
       }
     );
   }, []);
